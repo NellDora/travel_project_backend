@@ -1,5 +1,6 @@
 package com.nelldora.travel.board.dto;
 
+import com.nelldora.travel.board.domain.Board;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,28 +8,25 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
-@Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardDTO {
+@Builder
+@Data
+public class BoardReplyDTO {
 
-    private Long bno;
+    private Long brno;
 
-    private String title;
+    private Board board;
+
+    private Long boardNum;
 
     private String content;
-
-    private String category;
-
-    private boolean delFlag;
 
     private Timestamp regDate;
 
     private Timestamp updateDate;
 
+    private boolean delFlag;
+
     private boolean reportFlag;
-
-    private String writer;
-
 }

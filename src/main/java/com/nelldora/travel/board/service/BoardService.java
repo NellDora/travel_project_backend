@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Transactional
 public interface BoardService {
 
-    String register(Board board);
+    String register(BoardDTO boardDTO);
 
     PageBoardResponseDTO<BoardDTO> getBoardList(PageBoardRequestDTO boardRequestDTO);
 
@@ -24,7 +24,9 @@ public interface BoardService {
                 .delFlag(board.isDelFlag())
                 .regDate(board.getRegDate())
                 .category(board.getCategory())
-                .reportFlag(board.isReportFlag()).build();
+                .reportFlag(board.isReportFlag())
+                .writer(board.getWriter()).build();
+
     }
 
     default  Board dtoTnEntity(BoardDTO boardDTO){
@@ -35,6 +37,7 @@ public interface BoardService {
                 .delFlag(boardDTO.isDelFlag())
                 .regDate(boardDTO.getRegDate())
                 .category(boardDTO.getCategory())
-                .reportFlag(boardDTO.isReportFlag()).build();
+                .reportFlag(boardDTO.isReportFlag())
+                .writer(boardDTO.getWriter()).build();
     }
 }

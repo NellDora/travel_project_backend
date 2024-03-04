@@ -2,8 +2,10 @@ package com.nelldora.travel.board.controller;
 
 import com.nelldora.travel.board.domain.Board;
 import com.nelldora.travel.board.dto.BoardDTO;
+import com.nelldora.travel.board.dto.BoardReplyDTO;
 import com.nelldora.travel.board.dto.PageBoardRequestDTO;
 import com.nelldora.travel.board.dto.PageBoardResponseDTO;
+import com.nelldora.travel.board.service.BoardReplyService;
 import com.nelldora.travel.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -16,12 +18,11 @@ import org.springframework.web.bind.annotation.*;
 public class BoardController {
 
     private final BoardService boardService;
+    private final BoardReplyService boardReplyService;
 
     @PostMapping("/")
     public String register(@RequestBody BoardDTO boardDTO){
-        Board board = Board.builder().title(boardDTO.getTitle()).content(boardDTO.getContent()).build();
-
-        String result = boardService.register(board);
+        String result = boardService.register(boardDTO);
         return result;
     }
 
@@ -36,5 +37,11 @@ public class BoardController {
     public BoardDTO getBoard(@PathVariable("bno") Long bno){
         log.info(" board/{bno} 호출");
         return boardService.getBoard(bno);
+    }
+
+    @PostMapping("/{bno}/replys")
+    public Long register(@RequestBody BoardReplyDTO boardReplyDTO){
+        Long result = boardReplyService.register(boardReplyDTO);
+        return result;
     }
 }

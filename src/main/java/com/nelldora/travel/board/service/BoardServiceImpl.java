@@ -22,7 +22,8 @@ public class BoardServiceImpl implements BoardService{
 
     private final BoardRepository boardRepository;
 
-    public String register(Board board){
+    public String register(BoardDTO boardDTO){
+        Board board = dtoTnEntity(boardDTO);
         Board result = boardRepository.save(board);
         return result.getBno().toString();
     }

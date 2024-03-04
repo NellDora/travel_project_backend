@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "board")
@@ -33,6 +35,11 @@ public class Board {
     private Timestamp updateDate;
 
     private boolean reportFlag;
+
+    private String writer;
+
+    @OneToMany(mappedBy = "board")
+    private List<BoardReply> boardReplyList = new ArrayList<>();
 
     public void changeTitle(String title) {
         this.title = title;
