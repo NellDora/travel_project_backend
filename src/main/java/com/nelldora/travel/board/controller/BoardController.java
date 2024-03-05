@@ -1,10 +1,9 @@
 package com.nelldora.travel.board.controller;
 
-import com.nelldora.travel.board.domain.Board;
 import com.nelldora.travel.board.dto.BoardDTO;
 import com.nelldora.travel.board.dto.BoardReplyDTO;
-import com.nelldora.travel.board.dto.PageBoardRequestDTO;
-import com.nelldora.travel.board.dto.PageBoardResponseDTO;
+import com.nelldora.travel.board.utill.common.PageRequestDTO;
+import com.nelldora.travel.board.utill.common.PageResponseDTO;
 import com.nelldora.travel.board.service.BoardReplyService;
 import com.nelldora.travel.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +26,7 @@ public class BoardController {
     }
 
     @GetMapping("/")
-    public PageBoardResponseDTO getList(PageBoardRequestDTO boardRequestDTO){
+    public PageResponseDTO getList(PageRequestDTO boardRequestDTO){
         
         log.info("BoardList 호출");
         return boardService.getBoardList(boardRequestDTO);

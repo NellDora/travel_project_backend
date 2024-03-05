@@ -2,17 +2,16 @@ package com.nelldora.travel.board.service;
 
 import com.nelldora.travel.board.domain.Board;
 import com.nelldora.travel.board.dto.BoardDTO;
-import com.nelldora.travel.board.dto.PageBoardRequestDTO;
-import com.nelldora.travel.board.dto.PageBoardResponseDTO;
+import com.nelldora.travel.board.utill.common.PageRequestDTO;
+import com.nelldora.travel.board.utill.common.PageResponseDTO;
 import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Service;
 
 @Transactional
 public interface BoardService {
 
     String register(BoardDTO boardDTO);
 
-    PageBoardResponseDTO<BoardDTO> getBoardList(PageBoardRequestDTO boardRequestDTO);
+    PageResponseDTO<BoardDTO> getBoardList(PageRequestDTO boardRequestDTO);
 
     BoardDTO getBoard(Long bno);
 

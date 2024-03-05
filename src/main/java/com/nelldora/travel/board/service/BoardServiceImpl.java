@@ -3,9 +3,9 @@ package com.nelldora.travel.board.service;
 
 import com.nelldora.travel.board.domain.Board;
 import com.nelldora.travel.board.dto.BoardDTO;
-import com.nelldora.travel.board.dto.PageBoardRequestDTO;
-import com.nelldora.travel.board.dto.PageBoardResponseDTO;
+import com.nelldora.travel.board.utill.common.PageResponseDTO;
 import com.nelldora.travel.board.repository.BoardRepository;
+import com.nelldora.travel.board.utill.common.PageRequestDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -36,16 +36,16 @@ public class BoardServiceImpl implements BoardService{
         return boardDTO;
     }
 
-    public PageBoardResponseDTO<BoardDTO> getBoardList(PageBoardRequestDTO boardRequestDTO){
+    public PageResponseDTO<BoardDTO> getBoardList(PageRequestDTO boardRequestDTO){
 
         Page<Board> result = boardRepository.searchList(boardRequestDTO);
 
         List<BoardDTO> dtoList = result.get().map(board -> entityToDTO(board)).collect(Collectors.toList());
 
-        PageBoardResponseDTO<BoardDTO> responseDTO =
-                PageBoardResponseDTO.<BoardDTO>withAll()
+        PageResponseDTO<BoardDTO> responseDTO =
+                PageResponseDTO.<BoardDTO>withAll()
                         .dtoList(dtoList)
-                        .pageBoardRequestDTO(new PageBoardRequestDTO())
+                        .pageRequestDTO(new PageRequestDTO())
                         .total(result.getTotalElements())
                         .build();
         return responseDTO;

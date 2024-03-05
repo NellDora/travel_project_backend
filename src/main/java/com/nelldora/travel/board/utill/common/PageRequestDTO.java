@@ -1,4 +1,4 @@
-package com.nelldora.travel.board.dto;
+package com.nelldora.travel.board.utill.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +10,7 @@ import lombok.experimental.SuperBuilder;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PageBoardRequestDTO {
+public class PageRequestDTO {
 
     @Builder.Default
     private int page = 1;
