@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -28,4 +30,7 @@ public class VacationLandDTO {
     private Timestamp updateDate;
 
     private boolean reportFlag;
+
+    @Builder.Default
+    private List<String> uploadFileNames = new ArrayList<>();
 }

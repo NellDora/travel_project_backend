@@ -4,6 +4,9 @@ package com.nelldora.travel.vacationland.domain;
 import jakarta.persistence.Embeddable;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Embeddable
 @Getter
 @ToString
@@ -19,4 +22,5 @@ public class VacationLandImage {
     public void setOrd(int ord){
         this.ord=ord;
     }
+
 }

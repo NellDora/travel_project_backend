@@ -5,11 +5,13 @@ import com.nelldora.travel.board.utill.common.PageResponseDTO;
 import com.nelldora.travel.vacationland.domain.VacationLand;
 import com.nelldora.travel.vacationland.dto.VacationLandDTO;
 import com.nelldora.travel.vacationland.repository.VacationLandRepository;
+import com.querydsl.core.Tuple;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,9 +30,10 @@ public class VacationLandServiceImpl implements VacationLandService{
     @Override
     public PageResponseDTO<VacationLandDTO> getList(PageRequestDTO pageRequestDTO) {
 
-        Page<VacationLand> result = vacationLandRepository.searchList(pageRequestDTO);
+        Page<VacationLandDTO> result = vacationLandRepository.searchList(pageRequestDTO);
 
-        List<VacationLandDTO> dtoList = result.get().map(vacationLand -> entityToDTO(vacationLand)).collect(Collectors.toList());
+        List<VacationLandDTO> dtoList = new ArrayList<>();
+
 
         
         log.info("VacationLandService 호출");
@@ -41,7 +44,7 @@ public class VacationLandServiceImpl implements VacationLandService{
         PageResponseDTO<VacationLandDTO> responseDTO =
                 PageResponseDTO.<VacationLandDTO>withAll()
                         .dtoList(dtoList)
-                        .pageRequestDTO(new PageRequestDTO())
+                        .pageRequestDTO(pageRequestDTO)
                         .total(result.getTotalElements())
                         .build();
 
