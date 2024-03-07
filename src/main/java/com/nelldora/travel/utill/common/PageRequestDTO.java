@@ -1,4 +1,4 @@
-package com.nelldora.travel.board.utill.common;
+package com.nelldora.travel.utill.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

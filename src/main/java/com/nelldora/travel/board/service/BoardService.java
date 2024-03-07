@@ -2,8 +2,8 @@ package com.nelldora.travel.board.service;
 
 import com.nelldora.travel.board.domain.Board;
 import com.nelldora.travel.board.dto.BoardDTO;
-import com.nelldora.travel.board.utill.common.PageRequestDTO;
-import com.nelldora.travel.board.utill.common.PageResponseDTO;
+import com.nelldora.travel.utill.common.PageRequestDTO;
+import com.nelldora.travel.utill.common.PageResponseDTO;
 import jakarta.transaction.Transactional;
 
 @Transactional

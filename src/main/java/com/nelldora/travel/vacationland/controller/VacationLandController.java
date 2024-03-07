@@ -1,11 +1,14 @@
 package com.nelldora.travel.vacationland.controller;
 
-import com.nelldora.travel.board.utill.common.PageRequestDTO;
-import com.nelldora.travel.board.utill.common.PageResponseDTO;
+import com.nelldora.travel.utill.common.PageRequestDTO;
+import com.nelldora.travel.utill.common.PageResponseDTO;
+import com.nelldora.travel.utill.file.FileUtil;
 import com.nelldora.travel.vacationland.dto.VacationLandDTO;
 import com.nelldora.travel.vacationland.service.VacationLandService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Log4j2
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/vacationlands")
 public class VacationLandController {
 
+    private final FileUtil fileUtil;
     private final VacationLandService vacationLandService;
 
     @GetMapping("/")
@@ -33,6 +37,12 @@ public class VacationLandController {
     public String register(@RequestBody VacationLandDTO vacationLandDTO){
         String result = vacationLandService.register(vacationLandDTO);
         return result;
+    }
+
+    @GetMapping("/view/{fileName}")
+    public ResponseEntity<Resource> viewFileGet(@PathVariable String fileName){
+        log.info("VacationLand Controller 파일 이미지 출력 " + fileName);
+        return fileUtil.getFile(fileName);
     }
 
 }

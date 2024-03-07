@@ -3,9 +3,9 @@ package com.nelldora.travel.board.service;
 
 import com.nelldora.travel.board.domain.Board;
 import com.nelldora.travel.board.dto.BoardDTO;
-import com.nelldora.travel.board.utill.common.PageResponseDTO;
+import com.nelldora.travel.utill.common.PageResponseDTO;
 import com.nelldora.travel.board.repository.BoardRepository;
-import com.nelldora.travel.board.utill.common.PageRequestDTO;
+import com.nelldora.travel.utill.common.PageRequestDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;

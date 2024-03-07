@@ -2,7 +2,7 @@ package com.nelldora.travel.board.repository.search;
 
 import com.nelldora.travel.board.domain.Board;
 import com.nelldora.travel.board.domain.QBoard;
-import com.nelldora.travel.board.utill.common.PageRequestDTO;
+import com.nelldora.travel.utill.common.PageRequestDTO;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.JPQLQuery;
 import lombok.extern.log4j.Log4j2;

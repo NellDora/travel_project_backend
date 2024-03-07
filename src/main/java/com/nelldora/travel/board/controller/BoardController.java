@@ -2,13 +2,16 @@ package com.nelldora.travel.board.controller;
 
 import com.nelldora.travel.board.dto.BoardDTO;
 import com.nelldora.travel.board.dto.BoardReplyDTO;
-import com.nelldora.travel.board.utill.common.PageRequestDTO;
-import com.nelldora.travel.board.utill.common.PageResponseDTO;
+import com.nelldora.travel.utill.common.PageRequestDTO;
+import com.nelldora.travel.utill.common.PageResponseDTO;
 import com.nelldora.travel.board.service.BoardReplyService;
 import com.nelldora.travel.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/boards")
@@ -21,6 +24,7 @@ public class BoardController {
 
     @PostMapping("/")
     public String register(@RequestBody BoardDTO boardDTO){
+        boardDTO.setRegDate(Timestamp.valueOf(LocalDateTime.now()));
         String result = boardService.register(boardDTO);
         return result;
     }
