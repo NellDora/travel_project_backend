@@ -79,7 +79,7 @@ public class VacationLandServiceImpl implements VacationLandService{
     }
 
     private VacationLand dtoToEntity(VacationLandDTO vacationLandDTO){
-        return VacationLand.builder()
+        VacationLand vacationLand = VacationLand.builder()
                 .vno(vacationLandDTO.getVno())
                 .title(vacationLandDTO.getTitle())
                 .content(vacationLandDTO.getContent())
@@ -87,6 +87,19 @@ public class VacationLandServiceImpl implements VacationLandService{
                 .regDate(vacationLandDTO.getRegDate())
                 .category(vacationLandDTO.getCategory())
                 .reportFlag(vacationLandDTO.isReportFlag())
+
                 .build();
+
+        List<String> uploadFileNames = vacationLandDTO.getUploadFileNames();
+
+        if(uploadFileNames == null){
+            return vacationLand;
+        }
+
+        uploadFileNames.stream().forEach(uploadName ->{
+            vacationLand.addImageString(uploadName);
+        });
+
+        return vacationLand;
     }
 }
