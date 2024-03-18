@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -50,6 +51,26 @@ public class VacationLandServiceImpl implements VacationLandService{
                         .build();
 
         return responseDTO;
+    }
+
+    @Override
+    public void modify(VacationLandDTO vacationLandDTO) {
+        Optional<VacationLand> result = vacationLandRepository.findById(vacationLandDTO.getVno());
+
+        VacationLand vacationLand = result.orElseThrow();
+
+        vacationLand.changeTitle(vacationLandDTO.getTitle());
+        vacationLand.changeContent(vacationLandDTO.getContent());
+        vacationLand.changeCategory(vacationLandDTO.getCategory());
+        vacationLand.changeUpdateDate(vacationLandDTO.getUpdateDate());
+    }
+
+    @Override
+    public void delete(Long vno) {
+        Optional<VacationLand> result = vacationLandRepository.findById(vno);
+        VacationLand vacationLand = result.orElseThrow();
+
+        vacationLand.changeDelFlag(true);
     }
 
     private VacationLandDTO entityToDTO(VacationLand vacationLand){

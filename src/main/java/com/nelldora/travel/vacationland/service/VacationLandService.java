@@ -8,4 +8,8 @@ public interface VacationLandService {
 
     String register(VacationLandDTO vacationLandDTO);
     PageResponseDTO<VacationLandDTO> getList(PageRequestDTO pageRequestDTO);
+
+    void modify(VacationLandDTO vacationLandDTO);
+
+    void delete(Long vno);
 }

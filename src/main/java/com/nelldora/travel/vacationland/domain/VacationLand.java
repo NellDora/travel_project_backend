@@ -55,4 +55,28 @@ public class VacationLand {
         addImage(vacationLandImage);
     }
 
+    public void changeTitle(String title){
+        this.title = title;
+    }
+
+    public void changeContent(String content){
+        this.content = content;
+    }
+
+    public void changeCategory(String category){
+        this.category = category;
+    }
+
+    public void changeDelFlag (boolean delFlag){
+        this.delFlag=delFlag;
+    }
+
+    public void changeUpdateDate (Timestamp updateDate){
+        this.updateDate = updateDate;
+    }
+
+    public void changeReportFlag(boolean reportFlag){
+        this.reportFlag = reportFlag;
+    }
+
 }
