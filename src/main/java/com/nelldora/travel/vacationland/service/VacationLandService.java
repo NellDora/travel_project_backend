@@ -12,4 +12,6 @@ public interface VacationLandService {
     void modify(VacationLandDTO vacationLandDTO);
 
     void delete(Long vno);
+
+    VacationLandDTO getVacationLand(Long vno);
 }

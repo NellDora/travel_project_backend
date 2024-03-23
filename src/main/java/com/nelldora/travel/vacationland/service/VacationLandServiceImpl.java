@@ -123,4 +123,12 @@ public class VacationLandServiceImpl implements VacationLandService{
 
         return vacationLand;
     }
+
+    @Override
+    public VacationLandDTO getVacationLand(Long vno) {
+        Optional<VacationLand> result = vacationLandRepository.findById(vno);
+        VacationLand vacationLand = result.orElseThrow();
+        VacationLandDTO vacationLandDTO = entityToDTO(vacationLand);
+        return vacationLandDTO;
+    }
 }

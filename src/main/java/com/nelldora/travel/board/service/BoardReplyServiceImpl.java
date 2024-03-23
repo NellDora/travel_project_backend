@@ -42,4 +42,16 @@ public class BoardReplyServiceImpl implements BoardReplyService {
 
         return boardReply;
     }
+
+    private BoardReplyDTO entityToDto(BoardReply boardReply){
+
+        BoardReplyDTO boardReplyDTO = BoardReplyDTO.builder()
+                .brno(boardReply.getBrno())
+                .board(boardReply.getBoard())
+                .content(boardReply.getContent())
+                .regDate(boardReply.getRegDate())
+                .reportFlag(boardReply.isReportFlag())
+                .build();
+        return boardReplyDTO;
+    }
 }

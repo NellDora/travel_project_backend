@@ -53,4 +53,11 @@ public class VacationLandController {
         return fileUtil.getFile(fileName);
     }
 
+    @GetMapping("/{vno}")
+    public VacationLandDTO getVacationLand(@PathVariable("vno") Long vno){
+        log.info("호출호출");
+
+        return vacationLandService.getVacationLand(vno);
+    }
+
 }
