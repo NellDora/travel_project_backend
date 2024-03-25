@@ -1,6 +1,7 @@
 package com.nelldora.travel.vacationland.domain;
 
 
+import com.nelldora.travel.member.domain.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +10,9 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Builder
@@ -36,6 +39,12 @@ public class VacationLand {
     private Timestamp updateDate;
 
     private boolean reportFlag;
+
+    private int likeCount;
+
+    @ManyToOne
+    @JoinColumn(name = "member")
+    private List<Member> member = new ArrayList<>();
 
     //이미지
     @ElementCollection

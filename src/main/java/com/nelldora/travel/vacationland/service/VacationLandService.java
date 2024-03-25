@@ -14,4 +14,6 @@ public interface VacationLandService {
     void delete(Long vno);
 
     VacationLandDTO getVacationLand(Long vno);
+
+    String likePush(Long vno);
 }

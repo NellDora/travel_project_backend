@@ -82,6 +82,7 @@ public class VacationLandServiceImpl implements VacationLandService{
                 .regDate(vacationLand.getRegDate())
                 .category(vacationLand.getCategory())
                 .reportFlag(vacationLand.isReportFlag())
+                .likeCount(vacationLand.getLikeCount())
                 .build();
 
         log.info("entityToDTO : title :"+ vacationLand.getTitle());
@@ -108,6 +109,7 @@ public class VacationLandServiceImpl implements VacationLandService{
                 .regDate(vacationLandDTO.getRegDate())
                 .category(vacationLandDTO.getCategory())
                 .reportFlag(vacationLandDTO.isReportFlag())
+                .likeCount(vacationLandDTO.getLikeCount())
 
                 .build();
 
@@ -130,5 +132,15 @@ public class VacationLandServiceImpl implements VacationLandService{
         VacationLand vacationLand = result.orElseThrow();
         VacationLandDTO vacationLandDTO = entityToDTO(vacationLand);
         return vacationLandDTO;
+    }
+
+    @Override
+    public String likePush(Long vno) {
+        //해야 할 것 1. 아이디당 좋아요를 1번 눌렀으면 한번 더 누르면 감소가 되어야함
+        // 좋아요를 어떻게 할 것인가 -> 좋아요 테이블을 따로 만들어야하는가? -> 유저 Entity에 좋아요한 것을 따로 추가
+
+
+
+        return null;
     }
 }

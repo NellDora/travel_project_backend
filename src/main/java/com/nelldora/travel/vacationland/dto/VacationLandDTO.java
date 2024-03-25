@@ -32,6 +32,8 @@ public class VacationLandDTO {
 
     private boolean reportFlag;
 
+    private int likeCount;
+
     @Builder.Default
     private List<MultipartFile> files = new ArrayList<>();
 
